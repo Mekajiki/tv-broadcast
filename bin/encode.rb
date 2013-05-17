@@ -52,9 +52,9 @@ begin
 
   # encode
   # TODO: tune
-  system_command "ffmpeg -y -i #{splitted_source} #{map} #{FFMPEG_OPTION} -fpre #{FFMPEG_PRESET_PATH} #{out}"
+  system_command "ffmpeg -y -i #{splitted_source} #{map} #{FFMPEG_OPTION} -fpre #{FFMPEG_PRESET_PATH} tmp.mp4"
 
-  system_command "qt-faststart #{out}"
+  system_command "qt-faststart tmp.mp4 #{out}"
 ensure
   lockfile.unlock
 end
