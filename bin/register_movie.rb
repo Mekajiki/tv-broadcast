@@ -22,6 +22,7 @@ begin
     NKF.nkf('-m0Z1 -w', ARGV[0]).index NKF.nkf('-m0Z1 -w', info['title'].split('【')[0])
   end
   p program_info
+  raise unless program_info
 
   dist_path = "#{Settings.movie.storage}/#{escaped_name}.mp4"
   system_command "#{Settings.rvm_wrapper} runner #{Rails.root.join('bin', 'encode.rb')} \
