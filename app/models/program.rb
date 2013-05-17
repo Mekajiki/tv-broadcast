@@ -2,6 +2,8 @@ class Program < ActiveRecord::Base
   serialize :extdetail
   serialize :category
   serialize :attachinfo
+  serialize :video
+  serialize :audio
 
   belongs_to :channel
 
