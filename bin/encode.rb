@@ -14,7 +14,7 @@ unless ARGV.length == 2
   abort
 end
 
-lockfile = Lockfile.new 'encode.lock'
+lockfile = Lockfile.new '/tmp/encode.lock'
 
 begin
   lockfile.lock
