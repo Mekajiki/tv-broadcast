@@ -35,7 +35,7 @@ begin
 rescue
   STDERR.puts "registration failed: #{ARGV[0]}"
   escape_path = "#{Settings.movie.failed_ts_path}/#{source_file_name}"
-  STDERR.puts "save to #{ARGV[0]}"
+  STDERR.puts "save to #{escape_path}"
   system_command "mv #{work_dir}/#{source_file_name} #{escape_path}"
 ensure
   system_command "rm -rf #{work_dir}"
