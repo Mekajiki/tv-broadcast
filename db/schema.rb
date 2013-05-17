@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130517151624) do
+ActiveRecord::Schema.define(version: 20130517173551) do
 
   create_table "channels", force: true do |t|
     t.string   "id_string"
@@ -31,8 +31,8 @@ ActiveRecord::Schema.define(version: 20130517151624) do
     t.string   "title"
     t.string   "detail"
     t.text     "extdetail"
-    t.datetime "start"
-    t.datetime "end"
+    t.datetime "started_at"
+    t.datetime "ended_at"
     t.integer  "duration"
     t.text     "category"
     t.datetime "created_at"

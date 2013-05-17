@@ -4,5 +4,5 @@ class Program < ActiveRecord::Base
 
   belongs_to :channel
 
-  validates_presence_of :channel_id, :title, :movie_path, :event_id, :start, :end, :duration
+  validates_presence_of :channel_id, :title, :movie_path, :event_id, :started_at, :ended_at, :duration
 end
