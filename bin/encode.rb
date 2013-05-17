@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 require 'open3'
 require 'lockfile'
-require Rails.root.join('app', 'helpers', 'script_helper.rb')
+require Rails.root.join('bin', 'helper.rb')
 
 TSSPLITTER_PATH = Settings.movie.tssplitter.path
 TSSPLITTER_OPTION = Settings.movie.tssplitter.option
