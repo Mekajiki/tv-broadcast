@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  channel_id: 1
+  movie_path: 1
+  event_id: 1
+  freeCA: false
+  audio: MyString
+  video: MyString
+  attachinfo: MyString
+  title: MyString
+  detail: MyString
+  extdetail: MyText
+  start: 2013-05-18 00:14:44
+  end: 2013-05-18 00:14:44
+  duration: 1
+  category: MyText
+
+two:
+  channel_id: 1
+  movie_path: 1
+  event_id: 1
+  freeCA: false
+  audio: MyString
+  video: MyString
+  attachinfo: MyString
+  title: MyString
+  detail: MyString
+  extdetail: MyText
+  start: 2013-05-18 00:14:44
+  end: 2013-05-18 00:14:44
+  duration: 1
+  category: MyText
