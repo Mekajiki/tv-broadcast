@@ -9,12 +9,12 @@ unless ARGV.length == 1
   abort
 end
 
-escaped_name = Digest::MD5.file(ARGV[0]).hexdigest
-source_file_name = escaped_name + ".ts"
+md5_str = Digest::MD5.file(ARGV[0]).hexdigest
+source_file_name = md5_str + ".ts"
 work_dir = Settings.movie.workspace + Digest::MD5.hexdigest(File.basename(ARGV[0], '.ts'))
 Dir.mkdir work_dir
 begin
-  system_command "mv #{ARGV[0]} #{work_dir}/#{source_file_name}"
+  system_command "mv '#{ARGV[0]}' #{work_dir}/#{source_file_name}"
 
   stdin, stdout, stderr = Open3.popen3 "epgdump json #{work_dir}/#{source_file_name} -"
   epg = JSON.parse(stdout.read)
@@ -24,8 +24,8 @@ begin
   p program_info
   raise unless program_info
 
-  dist_path = "#{Settings.movie.storage}/#{escaped_name}.mp4"
-  system_command "#{Settings.rvm_wrapper} runner #{Rails.root.join('bin', 'encode.rb')} \
+  dist_path = "#{Settings.movie.storage}/#{md5_str}.mp4"
+  system_command "#{Settings.rvm_wrapper} runner #{Rails.root.join('bin', 'encode')} \
   #{work_dir}/#{source_file_name} \
   #{dist_path}"
 
