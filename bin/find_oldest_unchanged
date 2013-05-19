@@ -1,0 +1,16 @@
+#!/usr/bin/env ruby
+unless ARGV.length == 2
+  print "usage: #{$0} DIR THRESHOULD_SEC\n"
+  abort
+end
+WATCHING_DIR = ARGV[0]
+THRESHOULD = ARGV[1].to_f
+
+Dir.glob(WATCHING_DIR + '/*.ts') do |file|
+  if !@oldest_time || File.ctime(file) < @oldest_time
+    @oldest_time = File.ctime(file)
+    @oldest = file
+  end
+end
+
+puts @oldest if Time.now - @oldest_time > THRESHOULD
