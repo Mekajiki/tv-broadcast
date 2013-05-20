@@ -10,6 +10,7 @@ unless ARGV.length == 1
 end
 
 md5_str = Digest::MD5.file(ARGV[0]).hexdigest
+program_title = File.basename(ARGV[0], '.ts')
 source_file_name = md5_str + ".ts"
 work_dir = Settings.movie.workspace + Digest::MD5.hexdigest(File.basename(ARGV[0], '.ts'))
 Dir.mkdir work_dir
@@ -34,7 +35,7 @@ begin
   raise unless program.save
 rescue
   STDERR.puts "registration failed: #{ARGV[0]}"
-  escape_path = "#{Settings.movie.failed_ts_path}/#{source_file_name}"
+  escape_path = "#{Settings.movie.failed_ts_path}/#{program_title}.ts"
   STDERR.puts "save to #{escape_path}"
   system_command "mv #{work_dir}/#{source_file_name} #{escape_path}"
 ensure
