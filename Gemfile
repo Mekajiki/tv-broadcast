@@ -52,3 +52,5 @@ end
 
 gem 'rails_config'
 gem 'lockfile'
+gem 'execjs'
+gem 'therubyracer'
