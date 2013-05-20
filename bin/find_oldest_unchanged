@@ -13,4 +13,4 @@ Dir.glob(WATCHING_DIR + '/*.ts') do |file|
   end
 end
 
-puts @oldest if Time.now - @oldest_time > THRESHOULD
+puts @oldest if @oldest and Time.now - @oldest_time > THRESHOULD
