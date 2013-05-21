@@ -9,6 +9,10 @@ class Program < ActiveRecord::Base
 
   validates_presence_of :channel_id, :title, :movie_path, :event_id, :started_at, :ended_at, :duration
 
+  def is_anime?
+    category.to_s.index 'アニメ'
+  end
+
   class << self
     def new_from_epg epg
       channel = Channel.find_or_create_by(id_string: epg['channel'])
