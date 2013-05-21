@@ -10,8 +10,8 @@ TSSPLITTER_OPTION = Settings.movie.tssplitter.option
 FFMPEG_OPTION = Settings.movie.ffmpeg.option
 FFMPEG_PRESET_PATH = Settings.movie.ffmpeg.preset_path
 
-unless ARGV.length == 2
-  print "usage: #{$0} input_file output_file\n"
+unless ARGV.length >= 2
+  print "usage: #{$0} INPUT OUTPUT [FFMPEG_OPTION]...\n"
   abort
 end
 
@@ -52,8 +52,8 @@ begin
   map = stream_ids.map{|stream_id| '-map ' + stream_id}.join(' ')
 
   # encode
-  # TODO: tune
-  System.exec "ffmpeg -y -i #{splitted_source} #{map} #{FFMPEG_OPTION} -fpre #{FFMPEG_PRESET_PATH} tmp.mp4"
+  other_options = ARGV[2..-1].join(' ')
+  System.exec "ffmpeg -y -i #{splitted_source} #{map} #{other_options} #{FFMPEG_OPTION} -fpre #{FFMPEG_PRESET_PATH} tmp.mp4"
 
   System.exec "qt-faststart tmp.mp4 #{out}"
 ensure
