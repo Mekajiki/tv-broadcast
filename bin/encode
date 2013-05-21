@@ -1,7 +1,8 @@
 #!/usr/bin/env ruby
 require 'open3'
 require 'lockfile'
-require Rails.root.join('bin', 'helper.rb')
+
+include System
 
 TSSPLITTER_PATH = Settings.movie.tssplitter.path
 TSSPLITTER_OPTION = Settings.movie.tssplitter.option
@@ -22,7 +23,7 @@ begin
   source = ARGV[0]
   out = ARGV[1]
   # split ts
-  system_command "wine #{TSSPLITTER_PATH} #{TSSPLITTER_OPTION} '#{source}'"
+  System.exec "wine #{TSSPLITTER_PATH} #{TSSPLITTER_OPTION} '#{source}'"
 
   Dir.chdir File.dirname(source)
   biggest_size = 0
@@ -52,9 +53,9 @@ begin
 
   # encode
   # TODO: tune
-  system_command "ffmpeg -y -i #{splitted_source} #{map} #{FFMPEG_OPTION} -fpre #{FFMPEG_PRESET_PATH} tmp.mp4"
+  System.exec "ffmpeg -y -i #{splitted_source} #{map} #{FFMPEG_OPTION} -fpre #{FFMPEG_PRESET_PATH} tmp.mp4"
 
-  system_command "qt-faststart tmp.mp4 #{out}"
+  System.exec "qt-faststart tmp.mp4 #{out}"
 ensure
   lockfile.unlock
 end
