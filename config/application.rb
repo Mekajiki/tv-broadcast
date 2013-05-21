@@ -22,5 +22,6 @@ module TvBroadcast
     config.autoload_paths += Dir[
       "#{config.root}/lib/**/"
     ]
+    config.sass.preferred_syntax = :sass
   end
 end
