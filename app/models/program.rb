@@ -7,6 +7,8 @@ class Program < ActiveRecord::Base
 
   belongs_to :channel
 
+  default_scope order('started_at DESC')
+
   validates_presence_of :channel_id, :title, :movie_path, :event_id, :started_at, :ended_at, :duration
 
   def is_anime?
