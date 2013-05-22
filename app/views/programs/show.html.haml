@@ -22,7 +22,7 @@
           %dd= detail['item']
 
     .span10#movie-container
-      %video(controls)
+      %video#video(controls)
         %source{src: @program.movie_uri}
       #rate-controller
         #rate-slider

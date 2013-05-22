@@ -5,5 +5,7 @@ $ ->
     max:2.0
     step: 0.25
     change: (event, ui) ->
-      $('#rate-indicator').html('x' + ui.value.toFixed(2))
+      video = document.getElementById('video')
+      video.playbackRate = ui.value
+      $('#rate-indicator').html('x' + video.playbackRate.toFixed(2))
   })
