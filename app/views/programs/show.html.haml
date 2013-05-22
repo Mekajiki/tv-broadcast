@@ -9,6 +9,7 @@
 .container-fluid#container
   .row-fluid
     .span2#info-bar
+      =link_to 'ダウンロード', download_program_path(@program)
       %tl#program-detail
         %dt 放映日時
         %dd= @program.started_at.to_formatted_s(:long)

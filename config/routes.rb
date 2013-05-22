@@ -1,5 +1,9 @@
 TvBroadcast::Application.routes.draw do
-  resources :programs, :only => [:index, :show]
+  resources :programs, :only => [:index, :show] do
+    member do
+      get :download
+    end
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

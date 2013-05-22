@@ -2,13 +2,16 @@
   %thead
     %tr
       %th タイトル
+      %th
       %th 詳細
       %th 放映日時
       %th 時間
   %tbody
     -@programs.each do |program|
       %tr
-        %td= link_to program.title, program
+        %td
+          = link_to program.title, program
+        %td= link_to 'DL', download_program_path(program)
         %td= program.detail
         %td= program.started_at.to_formatted_s(:long)
         %td= program.duration_s
