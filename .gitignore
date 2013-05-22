@@ -21,3 +21,6 @@ config/environments/*.local.yml
 
 .ruby-version
 .ruby-gemset
+
+# Ignore symbolic link to movie storage
+public/movies
