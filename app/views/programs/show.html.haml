@@ -1,20 +1,25 @@
 %h1= @program.title
 
--@program.category.each do |category|
-  %ul
-    %li= category['large']['ja_JP']
-    %li= category['middle']['ja_JP']
+#category-container
+  -@program.category.each do |category|
+    %ul
+      %li= category['large']['ja_JP']
+      %li.descendant-category= category['middle']['ja_JP']
 
-%tl
-  %td 放映日時
-  %dd= @program.started_at
-  %td 時間
-  %dd= @program.duration
-  %td 詳細
-  %dd= @program.detail
-  -@program.extdetail.each do |detail|
-    %td= detail['item_description']
-    %dd= detail['item']
+.container-fluid#container
+  .row-fluid
+    .span2#info-bar
+      %tl#program-detail
+        %dt 放映日時
+        %dd= @program.started_at
+        %dt 時間
+        %dd= @program.duration
+        %dt 詳細
+        %dd= @program.detail
+        -@program.extdetail.each do |detail|
+          %dt= detail['item_description']
+          %dd= detail['item']
 
-%video{width: 1440, height: 1080, controls: true}
-  %source{src: @program.movie_uri}
+    .span10#movie-container
+      %video(controls)
+        %source{src: @program.movie_uri}
