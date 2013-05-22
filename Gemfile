@@ -47,6 +47,9 @@ group :development, :test do
   gem 'pry-nav'
 end
 
+group :production do
+  gem 'passenger'
+end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 

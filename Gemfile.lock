@@ -47,6 +47,7 @@ GEM
       execjs
     coffee-script-source (1.6.2)
     commonjs (0.2.6)
+    daemon_controller (1.1.4)
     diff-lcs (1.2.4)
     erubis (2.7.0)
     execjs (1.4.0)
@@ -81,6 +82,10 @@ GEM
     minitest (4.7.4)
     multi_json (1.7.3)
     mysql2 (0.3.11)
+    passenger (4.0.2)
+      daemon_controller (>= 1.1.0)
+      rack
+      rake (>= 0.8.1)
     polyglot (0.3.3)
     pry (0.9.12.2)
       coderay (~> 1.0.5)
@@ -172,6 +177,7 @@ DEPENDENCIES
   less-rails
   lockfile
   mysql2
+  passenger
   pry
   pry-nav
   pry-remote
