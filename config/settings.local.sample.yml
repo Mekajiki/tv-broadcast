@@ -1,0 +1,9 @@
+movie:
+  workspace: '/tmp/' #where the encoding script create temprorary working dir
+  storage: '/storage/movies/' #where the encoded movies are placed
+  dir_uri: '/movies' #uri for the storage in the web site
+  tssplitter:
+    path: '/usr/local/bin/TsSplitter.exe'
+  ffmpeg:
+    preset_path: '/home/mekajiki/webapps/tv-broadcast/config/libx264-hq-ts.ffpreset'
+  failed_ts_path: '/storage/failed_ts' #where unsuccessful ts files are moved into
