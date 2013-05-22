@@ -1,3 +1,9 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+$ ->
+  $('#rate-slider').slider({
+    value:1.0
+    min:0.5
+    max:2.0
+    step: 0.25
+    change: (event, ui) ->
+      $('#rate-indicator').html('x' + ui.value.toFixed(2))
+  })
