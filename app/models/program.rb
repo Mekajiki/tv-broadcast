@@ -15,6 +15,10 @@ class Program < ActiveRecord::Base
     category.to_s.index 'アニメ'
   end
 
+  def movie_uri
+    Settings.movie.dir_uri + '/' + movie_file_name
+  end
+
   class << self
     def new_from_epg epg
       channel = Channel.find_or_create_by(id_string: epg['channel'])

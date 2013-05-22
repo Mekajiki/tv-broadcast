@@ -1,2 +1,20 @@
-%h1 Programs#show
-%p Find me in app/views/programs/show.html.haml
+%h1= @program.title
+
+-@program.category.each do |category|
+  %ul
+    %li= category['large']['ja_JP']
+    %li= category['middle']['ja_JP']
+
+%tl
+  %td 放映日時
+  %dd= @program.started_at
+  %td 時間
+  %dd= @program.duration
+  %td 詳細
+  %dd= @program.detail
+  -@program.extdetail.each do |detail|
+    %td= detail['item_description']
+    %dd= detail['item']
+
+%video{width: 1440, height: 1080, controls: true}
+  %source{src: @program.movie_uri}
