@@ -1,0 +1,2 @@
+movie:
+  lock_file_path: '/tmp/encode.lock'

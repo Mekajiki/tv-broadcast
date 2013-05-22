@@ -31,10 +31,11 @@ begin
   @ffmpeg_option = '-tune animation' if program.is_anime?
 
   dist_path = "#{Settings.movie.storage}/#{md5_str}.mp4"
-  System.exec "#{Settings.rvm_wrapper} runner #{Rails.root.join('bin', 'encode')} \
-  #{work_dir}/#{source_file_name} \
-  #{dist_path} \
-  #{@ffmpeg_option}"
+  Movie::Encoder.encode(
+    "#{work_dir}/#{source_file_name}",
+    "#{dist_path}",
+    "#{@ffmpeg_option}"
+  )
 
   program.movie_file_name = md5_str + '.mp4'
   raise unless program.save
