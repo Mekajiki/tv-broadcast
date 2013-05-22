@@ -13,7 +13,7 @@
         %dt 放映日時
         %dd= @program.started_at.to_formatted_s(:long)
         %dt 時間
-        %dd= @program.duration
+        %dd= @program.duration_s
         %dt 詳細
         %dd= @program.detail
         -@program.extdetail.each do |detail|

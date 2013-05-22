@@ -19,6 +19,16 @@ class Program < ActiveRecord::Base
     Settings.movie.dir_uri + '/' + movie_file_name
   end
 
+  def duration_s
+    minutes = duration / 60
+    hour = 0
+    while minutes >= 60
+      minutes -= 60
+      hour += 1
+    end
+    "%d:%02d" % [hour, minutes]
+  end
+
   class << self
     def new_from_epg epg
       channel = Channel.find_or_create_by(id_string: epg['channel'])
