@@ -11,7 +11,7 @@
     .span2#info-bar
       %tl#program-detail
         %dt 放映日時
-        %dd= @program.started_at
+        %dd= @program.started_at.to_formatted_s(:long)
         %dt 時間
         %dd= @program.duration
         %dt 詳細
