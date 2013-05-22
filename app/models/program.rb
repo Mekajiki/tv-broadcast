@@ -9,7 +9,7 @@ class Program < ActiveRecord::Base
 
   default_scope order('started_at DESC')
 
-  validates_presence_of :channel_id, :title, :movie_path, :event_id, :started_at, :ended_at, :duration
+  validates_presence_of :channel_id, :title, :movie_file_name, :event_id, :started_at, :ended_at, :duration
 
   def is_anime?
     category.to_s.index 'アニメ'

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130517173551) do
+ActiveRecord::Schema.define(version: 20130522032532) do
 
   create_table "channels", force: true do |t|
     t.string   "id_string"
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20130517173551) do
 
   create_table "programs", force: true do |t|
     t.integer  "channel_id"
-    t.integer  "movie_path"
+    t.string   "movie_file_name"
     t.integer  "event_id"
     t.boolean  "freeCA"
     t.string   "audio"

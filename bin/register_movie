@@ -36,7 +36,7 @@ begin
   #{dist_path} \
   #{@ffmpeg_option}"
 
-  program.movie_path = dist_path
+  program.movie_file_name = md5_str + '.mp4'
   raise unless program.save
 rescue
   STDERR.puts "registration failed: #{ARGV[0]}"
