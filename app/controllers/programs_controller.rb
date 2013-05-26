@@ -9,8 +9,10 @@ class ProgramsController < ApplicationController
 
   def download
     program = Program.find params[:id]
-    send_file Settings.movie.storage + '/' + program.movie_file_name,
+    file_path = Settings.movie.storage + '/' + program.movie_file_name
+    send_file file_path,
       type: 'video/mp4',
-      filename: program.title + ".mp4"
+      filename: program.title + ".mp4",
+      length: File.size(file_path)
   end
 end
