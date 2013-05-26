@@ -9,6 +9,8 @@ class Program < ActiveRecord::Base
 
   default_scope order('started_at DESC')
 
+  paginates_per 20
+
   validates_presence_of :channel_id, :title, :movie_file_name, :event_id, :started_at, :ended_at, :duration
 
   def is_anime?
