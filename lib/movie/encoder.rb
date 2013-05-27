@@ -9,7 +9,7 @@ FFMPEG_PRESET_PATH = Settings.movie.ffmpeg.preset_path
 
 module Movie::Encoder
   class << self
-    def encode(source, out, other_options = '')
+    def encode(source, out, program_id, other_options = '')
       lockfile = Lockfile.new Settings.movie.lock_file_path
 
       begin
@@ -35,8 +35,13 @@ module Movie::Encoder
         stream_ids = []
         err_string = stderr.read.encode('UTF-16BE', 'UTF-8', :invalid => :replace, :undef => :replace, :replace => '?').encode('UTF-8')
         err_string.each_line do |line|
-          if match = /\s*Stream #(\d+:\d+)\[.+/.match(line)
-            if ng_words.map{|ng_word| !line.index(ng_word)}.reduce(&:&)
+          if match = /^\s*Program (\d+)/.match(line)
+            @current_program_id = match[1]
+          end
+
+          if match = /^\s*Stream #(\d+:\d+)\[/.match(line)
+            if (ng_words.map{|ng_word| !line.index(ng_word)}.reduce(&:&) and
+                @current_program_id == program_id)
               stream_ids.push(match[1])
             end
           end

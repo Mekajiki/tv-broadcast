@@ -35,6 +35,7 @@ begin
   Movie::Encoder.encode(
     "#{work_dir}/#{source_file_name}",
     "#{dist_path}",
+    program.channel.program_id,
     "#{@ffmpeg_option}"
   )
 
