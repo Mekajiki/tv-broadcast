@@ -33,7 +33,8 @@ module Movie::Encoder
         stdin, stdout, stderr = Open3.popen3 "ffmpeg -i #{@splitted_source}"
         ng_words = ['Unknown', '0 channels']
         stream_ids = []
-        stderr.each_line do |line|
+        err_string = stderr.read.encode('UTF-16BE', 'UTF-8', :invalid => :replace, :undef => :replace, :replace => '?').encode('UTF-8')
+        err_string.each_line do |line|
           if match = /\s*Stream #(\d+:\d+)\[.+/.match(line)
             if ng_words.map{|ng_word| !line.index(ng_word)}.reduce(&:&)
               stream_ids.push(match[1])
