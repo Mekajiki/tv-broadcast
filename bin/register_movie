@@ -20,8 +20,9 @@ begin
 
   stdin, stdout, stderr = Open3.popen3 "epgdump json #{work_dir}/#{source_file_name} -"
   epg = JSON.parse(stdout.read)
-  program_info = epg[0]['programs'].find do |info|
     NKF.nkf('-m0Z1 -w', ARGV[0]).index NKF.nkf('-m0Z1 -w', info['title'].split('【')[0])
+  programs = epg.map{|e| e['programs']}.flatten(1)
+  program_info = programs.find do |info|
   end
   p program_info
   raise unless program_info
