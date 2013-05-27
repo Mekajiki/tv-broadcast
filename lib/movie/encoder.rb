@@ -20,19 +20,17 @@ module Movie::Encoder
 
         Dir.chdir File.dirname(source)
         biggest_size = 0
-        splitted_source = ''
         Dir.glob('*_HD*.ts').each do |file|
           if File.size(file) > biggest_size
             biggest_size = File.size(file)
-            splitted_source = File.basename(source, '.ts') + "_HD.ts"
+            @splitted_source = File.basename(source, '.ts') + "_HD.ts"
           end
         end
 
-        #detect which streams to map
-        stdin, stdout, stderr = Open3.popen3 "epgdump json #{splitted_source} -"
-        program_info = JSON.parse(stdout.read)
+        @splitted_source ||= File.basename(source)
 
-        stdin, stdout, stderr = Open3.popen3 "ffmpeg -i #{splitted_source}"
+        #detect which streams to map
+        stdin, stdout, stderr = Open3.popen3 "ffmpeg -i #{@splitted_source}"
         ng_words = ['Unknown', '0 channels']
         stream_ids = []
         stderr.each_line do |line|
@@ -45,7 +43,7 @@ module Movie::Encoder
         map = stream_ids.map{|stream_id| '-map ' + stream_id}.join(' ')
 
         # encode
-        System.exec "ffmpeg -y -i #{splitted_source} #{map} #{other_options} #{FFMPEG_OPTION} -fpre #{FFMPEG_PRESET_PATH} tmp.mp4"
+        System.exec "ffmpeg -y -i #{@splitted_source} #{map} #{other_options} #{FFMPEG_OPTION} -fpre #{FFMPEG_PRESET_PATH} tmp.mp4"
 
         System.exec "qt-faststart tmp.mp4 #{out}"
       rescue Exception => ex
