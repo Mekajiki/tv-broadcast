@@ -39,7 +39,10 @@ begin
 
   program.movie_file_name = md5_str + '.mp4'
   raise unless program.save
-rescue
+rescue Exception => ex
+  puts ex.message
+  puts ex.backtrace.join("\n")
+
   STDERR.puts "registration failed: #{ARGV[0]}"
   escape_path = "#{Settings.movie.failed_ts_path}/#{program_title}.ts"
   STDERR.puts "save to #{escape_path}"

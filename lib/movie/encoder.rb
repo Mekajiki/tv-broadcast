@@ -48,6 +48,9 @@ module Movie::Encoder
         System.exec "ffmpeg -y -i #{splitted_source} #{map} #{other_options} #{FFMPEG_OPTION} -fpre #{FFMPEG_PRESET_PATH} tmp.mp4"
 
         System.exec "qt-faststart tmp.mp4 #{out}"
+      rescue Exception => ex
+        puts ex.message
+        puts ex.backtrace.join("\n")
       ensure
         lockfile.unlock
       end
