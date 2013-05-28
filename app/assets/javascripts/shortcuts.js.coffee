@@ -25,6 +25,23 @@ key '=', ->
 key 'j', ->
   playBack(15)
 
+key 'ctrl+j', ->
+  playBack(60)
 
 key 'k', ->
   playBack(-15)
+
+key 'ctrl+k', ->
+  playBack(-60)
+
+key 'h', ->
+  playBack(-3 * 60)
+
+key 'ctrl+h', ->
+  playBack(-10 * 60)
+
+key 'l', ->
+  playBack(3 * 60)
+
+key 'ctrl+l', ->
+  playBack(10 * 60)
