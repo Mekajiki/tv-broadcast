@@ -1,5 +1,9 @@
 - title @program.title
 
+-content_for :javascript do
+  :javascript
+    key.setScope('theater');
+
 %h1= @program.title
 
 #category-container
