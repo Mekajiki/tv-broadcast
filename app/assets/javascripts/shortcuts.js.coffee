@@ -2,7 +2,7 @@ playBack = (sec) ->
   video = document.getElementById('video')
   video.currentTime += sec * video.playbackRate
 
-key 'space', ->
+key 'space', 'theater', ->
   video = document.getElementById('video')
   if video.paused
     video.play()
@@ -10,38 +10,38 @@ key 'space', ->
     video.pause()
   false
 
-key '-', ->
+key '-', 'theater', ->
   slider = $('#rate-controller input')
   slider.val (index, value) ->
     value - slider.attr('step')
   slider.trigger('change')
 
-key '=', ->
+key '=', 'theater', ->
   slider = $('#rate-controller input')
   slider.val (index, value) ->
     parseFloat(value) + parseFloat(slider.attr('step'))
   slider.trigger('change')
 
-key 'j', ->
+key 'j', 'theater', ->
   playBack(15)
 
-key 'ctrl+j', ->
+key 'ctrl+j', 'theater', ->
   playBack(60)
 
-key 'k', ->
+key 'k', 'theater', ->
   playBack(-15)
 
-key 'ctrl+k', ->
+key 'ctrl+k', 'theater', ->
   playBack(-60)
 
-key 'h', ->
+key 'h', 'theater', ->
   playBack(-3 * 60)
 
-key 'ctrl+h', ->
+key 'ctrl+h', 'theater', ->
   playBack(-10 * 60)
 
-key 'l', ->
+key 'l', 'theater', ->
   playBack(3 * 60)
 
-key 'ctrl+l', ->
+key 'ctrl+l', 'theater', ->
   playBack(10 * 60)
