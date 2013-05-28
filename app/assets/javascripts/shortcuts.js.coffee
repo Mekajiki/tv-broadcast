@@ -48,3 +48,6 @@ key 'ctrl+l', 'theater', ->
 
 key 'u', 'theater', ->
   Turbolinks.visit('/programs')
+
+key 'shift+/', ->
+  $('#shortcut-help').toggleClass('hidden')
