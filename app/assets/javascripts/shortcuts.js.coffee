@@ -1,3 +1,7 @@
+playBack = (sec) ->
+  video = document.getElementById('video')
+  video.currentTime += sec * video.playbackRate
+
 key 'space', ->
   video = document.getElementById('video')
   if video.paused
@@ -19,10 +23,8 @@ key '=', ->
   slider.trigger('change')
 
 key 'j', ->
-  video = document.getElementById('video')
-  video.currentTime += 15
+  playBack(15)
 
 
 key 'k', ->
-  video = document.getElementById('video')
-  video.currentTime -= 15
+  playBack(-15)
