@@ -1,9 +1,10 @@
-key 'p', ->
+key 'space', ->
   video = document.getElementById('video')
   if video.paused
     video.play()
   else
     video.pause()
+  false
 
 key '-', ->
   slider = $('#rate-controller input')
