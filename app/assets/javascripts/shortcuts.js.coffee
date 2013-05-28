@@ -45,3 +45,6 @@ key 'l', 'theater', ->
 
 key 'ctrl+l', 'theater', ->
   playBack(10 * 60)
+
+key 'u', 'theater', ->
+  Turbolinks.visit('/programs')
