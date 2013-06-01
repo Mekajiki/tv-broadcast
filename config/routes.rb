@@ -1,4 +1,9 @@
 TvBroadcast::Application.routes.draw do
+  get '/auth/facebook', :as => :login
+  get '/auth/facebook/callback', :to => 'sessions#create'
+  get '/auth/failure', :to => 'sessions#failure'
+  delete '/logout', :to => 'sessions#destroy', :as => :logout
+
   resources :programs, :only => [:index, :show] do
     member do
       get :download

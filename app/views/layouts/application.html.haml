@@ -4,6 +4,26 @@
   = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
   = csrf_meta_tags
 %body
+  .navbar.navbar-fixed-top
+    .navbar-inner
+      .container
+        %a.btn.btn-navbar(data-target='.nav-collapse' data-toggle='collapse')
+          %span.icon-bar
+          %span.icon-bar
+          %span.icon-bar
+        %a.brand(href='/') TV
+        .nav-collapse.collapse
+          %ul.nav
+            %li= link_to 'Programs', programs_path
+          .pull-right
+            %ul.nav
+              - if logged_in?
+                %li
+                  %a(href='#{login_path}') Login
+              - else
+                %li
+                  %a(href='#{logout_path}' data-method='delete') Logout
+
   = yield
   = render 'shared/shortcut_help'
   = javascript_include_tag "application", "data-turbolinks-track" => true

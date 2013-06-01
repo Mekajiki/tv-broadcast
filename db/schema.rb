@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130522032532) do
+ActiveRecord::Schema.define(version: 20130601090437) do
 
   create_table "channels", force: true do |t|
     t.string   "id_string"
@@ -38,5 +38,15 @@ ActiveRecord::Schema.define(version: 20130522032532) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "users", force: true do |t|
+    t.string   "uid"
+    t.string   "token"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "users", ["uid"], name: "index_users_on_uid", unique: true, using: :btree
 
 end
