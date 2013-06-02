@@ -1,3 +1,4 @@
+# shortcuts for playback
 playBack = (sec) ->
   video = document.getElementById('video')
   video.currentTime += sec * video.playbackRate
@@ -51,3 +52,8 @@ key 'u', 'theater', ->
 
 key 'shift+/', ->
   $('#shortcut-help').toggleClass('hidden')
+
+# shortcuts for programs list
+key '/', 'list', ->
+  $('#program_filter_keyword').focus()
+  false
