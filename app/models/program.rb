@@ -7,7 +7,7 @@ class Program < ActiveRecord::Base
 
   belongs_to :channel
 
-  default_scope order('started_at DESC')
+  default_scope { order('started_at DESC') }
 
   paginates_per 20
 
