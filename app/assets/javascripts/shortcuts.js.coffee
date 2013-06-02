@@ -23,28 +23,28 @@ key '=', 'theater', ->
   slider.trigger('change')
 
 key 'j', 'theater', ->
-  playBack(15)
+  playBack(5)
 
 key 'ctrl+j', 'theater', ->
-  playBack(60)
+  playBack(30)
 
 key 'k', 'theater', ->
-  playBack(-15)
+  playBack(-5)
 
 key 'ctrl+k', 'theater', ->
-  playBack(-60)
+  playBack(-30)
 
 key 'h', 'theater', ->
-  playBack(-3 * 60)
+  playBack(-60)
 
 key 'ctrl+h', 'theater', ->
-  playBack(-10 * 60)
+  playBack(-5 * 60)
 
 key 'l', 'theater', ->
-  playBack(3 * 60)
+  playBack(60)
 
 key 'ctrl+l', 'theater', ->
-  playBack(10 * 60)
+  playBack(5 * 60)
 
 key 'u', 'theater', ->
   Turbolinks.visit('/programs')
