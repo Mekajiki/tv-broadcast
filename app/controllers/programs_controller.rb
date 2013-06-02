@@ -1,6 +1,7 @@
 class ProgramsController < ApplicationController
   def index
-    @programs = Program.all.page params[:page]
+    @program_filter = ProgramFilter.new params[:program_filter]
+    @programs = @program_filter.exec.page params[:page]
   end
 
   def show
