@@ -2,6 +2,9 @@
   :javascript
     key.setScope('list');
 
+=form_for @program_filter, url: programs_path, html: {method: :get} do |f|
+  = f.text_field :keyword
+
 =paginate @programs
 %table.table
   %thead
