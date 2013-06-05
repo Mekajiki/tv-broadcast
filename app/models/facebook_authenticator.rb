@@ -4,7 +4,7 @@ class FacebookAuthenticator
   end
 
   def create_or_update_user
-    user = User.where(uid: uid).first || User.new
+    user = User.where(uid: uid).first || User.new(status: :pending)
     user.update_attributes(uid: uid, name: name, token: token)
     user
   end
