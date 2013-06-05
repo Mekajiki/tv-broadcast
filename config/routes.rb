@@ -4,6 +4,8 @@ TvBroadcast::Application.routes.draw do
   get '/auth/failure', :to => 'sessions#failure'
   delete '/logout', :to => 'sessions#destroy', :as => :logout
 
+  resources :users
+
   resources :programs, :only => [:index, :show] do
     member do
       get :download
