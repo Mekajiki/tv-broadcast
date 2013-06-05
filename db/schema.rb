@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130601090437) do
+ActiveRecord::Schema.define(version: 20130605002458) do
 
   create_table "channels", force: true do |t|
     t.string   "id_string"
@@ -45,8 +45,10 @@ ActiveRecord::Schema.define(version: 20130601090437) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "status"
   end
 
+  add_index "users", ["status"], name: "index_users_on_status", using: :btree
   add_index "users", ["uid"], name: "index_users_on_uid", unique: true, using: :btree
 
 end
