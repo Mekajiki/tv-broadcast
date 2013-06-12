@@ -7,3 +7,4 @@ movie:
   ffmpeg:
     preset_path: '/home/mekajiki/webapps/tv-broadcast/config/libx264-hq-ts.ffpreset'
   failed_ts_path: '/storage/failed_ts' #where unsuccessful ts files are moved into
+  successed_ts_path: '/storage/successed_ts' #where successful ts files are moved into

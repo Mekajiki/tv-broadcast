@@ -53,5 +53,7 @@ rescue Exception => ex
   STDERR.puts "save to #{escape_path}"
   System.exec "mv #{work_dir}/#{source_file_name} #{escape_path}"
 ensure
+  preserve_path = "#{Settings.movie.successed_ts_path}/#{program_title}.ts"
+  System.exec "mv #{work_dir}/#{source_file_name} #{preserve_path}"
   System.exec "rm -rf #{work_dir}"
 end
