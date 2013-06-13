@@ -1,4 +1,9 @@
 class SessionsController < ApplicationController
+  skip_before_filter :require_login
+
+  def new
+  end
+
   def create
     user = FacebookAuthenticator.new(request.env['omniauth.auth']).create_or_update_user
     session[:user_id] = user.id if user.active?
