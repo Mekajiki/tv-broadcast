@@ -1,4 +1,6 @@
 class ProgramsController < ApplicationController
+  before_filter :require_login
+
   def index
     @program_filter = ProgramFilter.new params[:program_filter]
     @programs = @program_filter.exec.page params[:page]

@@ -43,6 +43,7 @@ end
 group :development, :test do
   gem 'rspec-rails'
   gem 'pry'
+  gem 'pry-rails'
   gem 'pry-remote'
   gem 'pry-nav'
 end
@@ -59,5 +60,6 @@ gem 'execjs'
 gem 'therubyracer'
 gem 'haml-rails'
 gem 'less-rails'
-gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
+gem 'twitter-bootstrap-rails', '2.2.6'
 gem 'kaminari'
+gem 'omniauth-facebook'

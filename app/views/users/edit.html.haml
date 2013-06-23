@@ -1,0 +1,8 @@
+= form_for @user do |f|
+  .control-group
+    %label.control-label Status
+    .controls
+      = f.select :status, %w(pending active suspended)
+  .control-group
+    .controls
+      %button.btn Update

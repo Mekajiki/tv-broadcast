@@ -18,7 +18,7 @@ class Program < ActiveRecord::Base
   end
 
   def movie_uri
-    Settings.movie.dir_uri + '/' + movie_file_name
+    "#{Settings.movie.dir_uri}/#{movie_file_name}"
   end
 
   def duration_s
