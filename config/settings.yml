@@ -1,5 +1,5 @@
 movie:
   tssplitter:
-    option: '-SD -1SEG -SEP3'
+    option: '-SD -1SEG'
   ffmpeg:
     option: '-f mp4 -vcodec libx264 -threads 8'
