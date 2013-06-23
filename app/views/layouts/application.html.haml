@@ -17,12 +17,11 @@
             %li= link_to 'Programs', programs_path
           .pull-right
             %ul.nav
-              - if logged_in?
-                %li
-                  %a(href='#{login_path}') Login
-              - else
-                %li
+              %li
+                - if logged_in?
                   %a(href='#{logout_path}' data-method='delete') Logout
+                - else
+                  %a(href='#{login_path}') Login
 
   = yield
   = render 'shared/shortcut_help'
