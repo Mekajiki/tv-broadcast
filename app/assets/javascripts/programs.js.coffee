@@ -1,4 +1,4 @@
-$ ->
+document.addEventListener "page:change", () ->
   $('#rate-controller input').change (event) ->
       video = document.getElementById('video')
       wasPlaying = !video.paused
