@@ -48,7 +48,7 @@ key 'ctrl+l', 'theater', ->
   playBack(5 * 60)
 
 key 'u', 'theater', ->
-  Turbolinks.visit('/programs')
+  history.back()
 
 key 'shift+/', ->
   $('#shortcut-help').toggleClass('hidden')
