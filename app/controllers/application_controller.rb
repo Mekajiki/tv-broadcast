@@ -16,4 +16,8 @@ class ApplicationController < ActionController::Base
   def require_login
     redirect_to login_path unless logged_in?
   end
+
+  def set_program_filter
+    @program_filter = ProgramFilter.new params[:program_filter]
+  end
 end

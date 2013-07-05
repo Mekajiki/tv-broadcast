@@ -54,6 +54,6 @@ key 'shift+/', ->
   $('#shortcut-help').toggleClass('hidden')
 
 # shortcuts for programs list
-key '/', 'list', ->
+key '/', ->
   $('#program_filter_keyword').focus()
   false
