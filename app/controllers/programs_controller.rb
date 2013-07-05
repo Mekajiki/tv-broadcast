@@ -1,8 +1,8 @@
 class ProgramsController < ApplicationController
   before_filter :require_login
+  before_filter :set_program_filter, except: [ :download ]
 
   def index
-    @program_filter = ProgramFilter.new params[:program_filter]
     @programs = @program_filter.exec.page params[:page]
   end
 

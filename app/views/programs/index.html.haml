@@ -1,9 +1,5 @@
--content_for :javascript do
-  :javascript
-    key.setScope('list');
-
-=form_for @program_filter, url: programs_path, html: {method: :get} do |f|
-  = f.text_field :keyword
+:javascript
+  key.setScope('list');
 
 =paginate @programs
 %table.table
