@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   skip_before_filter :require_login
+  before_filter :set_program_filter
 
   def new
   end

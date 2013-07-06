@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_filter :set_program_filter
+
   def index
     @users = User.all
   end
