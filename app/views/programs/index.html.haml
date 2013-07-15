@@ -15,7 +15,7 @@
 
           %p
             =link_to program.title, program
-            %span.dl-link
+            %span.dl-link.visible-desktop
               = link_to "\u{21F2}", download_program_path(program), :'data-no-turbolink' => true
         %td.hidden-phone= program.detail
 
