@@ -14,7 +14,7 @@
 
 .container-fluid#container
   .row-fluid
-    .span2#info-bar
+    .span3#info-bar
       =link_to 'ダウンロード', download_program_path(@program), :'data-no-turbolink' => true
       %tl#program-detail
         %dt 放映日時
@@ -27,7 +27,7 @@
           %dt= detail['item_description']
           %dd= detail['item']
 
-    .span10#movie-container
+    .span9#movie-container
       %video#video(controls)
         %source{src: @program.movie_uri}
       #rate-controller
