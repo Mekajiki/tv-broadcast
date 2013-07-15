@@ -2,21 +2,21 @@
   key.setScope('list');
 
 =paginate @programs
-%table.table
-  %thead
-    %tr
-      %th タイトル
-      %th
-      %th 詳細
-      %th 放映日時
-      %th 時間
+%table.table#programs
   %tbody
     -@programs.each do |program|
       %tr
         %td
-          = link_to program.title, program
-        %td= link_to 'DL', download_program_path(program), :'data-no-turbolink' => true
-        %td= program.detail
-        %td= program.started_at.to_formatted_s(:long)
-        %td= program.duration_s
+          %p.date
+            = program.started_at.to_formatted_s(:long)
+            (
+            = program.duration_s
+            )
+
+          %p
+            =link_to program.title, program
+            %span.dl-link.visible-desktop
+              = link_to "\u{21F2}", download_program_path(program), :'data-no-turbolink' => true
+        %td.hidden-phone= program.detail
+
 =paginate @programs
