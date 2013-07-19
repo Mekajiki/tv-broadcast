@@ -1,32 +1,33 @@
 !!! html
 %html
-  %title= ['TvBroadcast', content_for(:title)].reject(&:blank?).join(' | ')
-  %meta(name='viewport' content='width=device-width')
-  = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
-  = javascript_include_tag "application", "data-turbolinks-track" => true
-  = csrf_meta_tags
-%body
-  .navbar.navbar-fixed-top
-    .navbar-inner
-      .container
-        %a.btn.btn-navbar(data-target='.nav-collapse' data-toggle='collapse')
-          %span.icon-bar
-          %span.icon-bar
-          %span.icon-bar
-        %a.brand(href='/') TV
-        .nav-collapse.collapse
-          %ul.nav
-            %li= link_to 'Programs', programs_path
-          =form_for @program_filter, url: programs_path, html: {method: :get, class: 'navbar-search pull-left'} do |f|
-            = f.text_field :keyword, { class: 'search-query'}
-          .pull-right
+  %head
+    %title= ['TvBroadcast', content_for(:title)].reject(&:blank?).join(' | ')
+    %meta(name='viewport' content='width=device-width')
+    = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = csrf_meta_tags
+  %body
+    .navbar.navbar-fixed-top
+      .navbar-inner
+        .container
+          %a.btn.btn-navbar(data-target='.nav-collapse' data-toggle='collapse')
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          %a.brand(href='/') TV
+          .nav-collapse.collapse
             %ul.nav
-              %li
-                - if logged_in?
-                  %a(href='#{logout_path}' data-method='delete') Logout
-                - else
-                  %a(href='#{login_path}') Login
+              %li= link_to 'Programs', programs_path
+            =form_for @program_filter, url: programs_path, html: {method: :get, class: 'navbar-search pull-left'} do |f|
+              = f.text_field :keyword, { class: 'search-query'}
+            .pull-right
+              %ul.nav
+                %li
+                  - if logged_in?
+                    %a(href='#{logout_path}' data-method='delete') Logout
+                  - else
+                    %a(href='#{login_path}') Login
 
-  = yield
-  = render 'shared/shortcut_help'
-  = yield :javascript
+    = yield
+    = render 'shared/shortcut_help'
+    = yield :javascript
