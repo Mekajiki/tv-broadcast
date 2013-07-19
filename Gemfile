@@ -47,6 +47,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'pry-remote'
   gem 'pry-nav'
+  gem 'thin'
 end
 
 group :production do
