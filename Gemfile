@@ -41,6 +41,7 @@ end
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
 group :development, :test do
+  gem 'sqlite3'
   gem 'rspec-rails'
   gem 'pry'
   gem 'pry-rails'
