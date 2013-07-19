@@ -46,8 +46,8 @@
               %tr
                 %td 詳細
                 %td= @program.detail
-              %tr
-                - @program.extdetail.each do |detail|
+              - @program.extdetail.each do |detail|
+                %tr
                   %td= detail['item_description']
                   %td= detail['item']
 
@@ -59,19 +59,3 @@
 - content_for :javascript do
   :javascript
     key.setScope('theater');
-
-- if false
-  #category-container
-    -@program.category.each do |category|
-      %ul
-        %li= category['large']['ja_JP']
-        %li.descendant-category= category['middle']['ja_JP']
-
-  .container-fluid#container
-    .row-fluid
-      .span3#info-bar
-        =link_to 'ダウンロード', download_program_path(@program), :'data-no-turbolink' => true
-
-      .span9#movie-container
-        %video#video(controls)
-          %source{src: @program.movie_uri}
