@@ -9,7 +9,7 @@ $(document).on "ready page:load", () ->
       if wasPlaying
         video.play()
 
-  screenshot = new Screenshot('video', 'canvas', 'screenshot')
+  screenshot = new Screenshot('video', 'canvas', 'screenshot', 0.5)
 
   key 's', 'theater', ->
     screenshot.take()
