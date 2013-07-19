@@ -16,4 +16,5 @@
 //= require turbolinks
 //= require keymaster
 //= require keymaster.sequence
+//= require holder
 //= require_tree .
