@@ -16,10 +16,12 @@
             %span.icon-bar
           %a.brand(href='/') TV
           .nav-collapse.collapse
-            %ul.nav
-              %li= link_to 'Programs', programs_path
-            =form_for @program_filter, url: programs_path, html: {method: :get, class: 'navbar-search pull-left'} do |f|
-              = f.text_field :keyword, { class: 'search-query'}
+            .pull-left
+              %ul.nav
+                %li= link_to 'Programs', programs_path
+
+            %form.navbar-search(action="#{programs_path}" method='get')
+              %input.search-query(type='text' placeholder='Search' name='keyword')
             .pull-right
               %ul.nav
                 %li
