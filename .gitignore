@@ -26,3 +26,4 @@ config/environments/*.local.yml
 # Ignore symbolic link to movie storage
 public/movies
 public/assets
+public/*.mp4

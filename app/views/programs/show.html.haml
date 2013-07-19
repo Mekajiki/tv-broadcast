@@ -26,6 +26,9 @@
         -@program.extdetail.each do |detail|
           %dt= detail['item_description']
           %dd= detail['item']
+        %dt スクリーンショット
+        %dd
+          %img#screenshot
 
     .span9#movie-container
       %video#video(controls)
@@ -34,3 +37,5 @@
         %input{type: 'range', min: 0.5, max: 2.0, step: 0.25, value:1.0}
         %span#rate-indicator
           x1.0
+
+      %canvas#canvas
