@@ -30,6 +30,7 @@
                   - else
                     %a(href='#{login_path}') Login
 
-    = yield
+    .container
+      = yield
     = render 'shared/shortcut_help'
     = yield :javascript
