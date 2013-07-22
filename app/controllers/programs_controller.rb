@@ -8,6 +8,7 @@ class ProgramsController < ApplicationController
 
   def show
     @program = Program.find params[:id]
+    @related = Program.where('title LIKE ?', "%#{@program.title}%").where('id NOT IN (?)', @program)
   end
 
   def download

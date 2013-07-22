@@ -55,5 +55,9 @@ key 'shift+/', ->
 
 # shortcuts for programs list
 key '/', ->
-  $('#program_filter_keyword').focus()
+  $('#search').focus()
   false
+
+$(document).keyup (event) ->
+  if event.keyCode == 27
+    $('input[type=text]').blur()

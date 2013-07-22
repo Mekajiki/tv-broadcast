@@ -1,13 +1,14 @@
 class window.Screenshot
-  constructor: (videoId, canvasId, imageId) ->
+  constructor: (videoId, canvasId, imageId, scale) ->
     @video = document.getElementById(videoId)
     @canvas = document.getElementById(canvasId)
     @context = @canvas.getContext('2d')
     @image = document.getElementById(imageId)
+    @scale = scale
 
     @video.addEventListener 'loadedmetadata', (event) =>
-      @width = @video.videoWidth
-      @height = @video.videoHeight
+      @width = @video.videoWidth * @scale
+      @height = @video.videoHeight * @scale
 
   take: ->
     if @width? and @height?

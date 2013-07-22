@@ -8,8 +8,3 @@ $(document).on "ready page:load", () ->
       $('#rate-indicator').html('x' + video.playbackRate.toFixed(2))
       if wasPlaying
         video.play()
-
-  screenshot = new Screenshot('video', 'canvas', 'screenshot')
-
-  key 's', 'theater', ->
-    screenshot.take()
