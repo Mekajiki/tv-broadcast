@@ -1,23 +1,19 @@
-:javascript
-  key.setScope('list');
-
-=paginate @programs
 %table.table#programs
   %tbody
-    -@programs.each do |program|
+    - @programs.each do |program|
       %tr
         %td
-          %p.date
-            = program.started_at.to_formatted_s(:long)
-            (
-            = program.duration_s
-            )
-
+          %p.date= "#{l program.started_at, format: :short}(#{program.duration_s})"
           %p
-            =link_to program.title, program
+            = link_to program.title, program
             %span.dl-link
               %span.visible-desktop
-                = link_to "\u{21F2}", download_program_path(program), :'data-no-turbolink' => true
+                %a(href='#{download_program_path(program)}' data-no-turbolink)
+                  %i.icon-download
         %td.hidden-phone= program.detail
 
-=paginate @programs
+= paginate @programs
+
+- content_for :javascript do
+  :javascript
+    key.setScope('list');

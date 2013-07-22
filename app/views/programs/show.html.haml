@@ -1,36 +1,15 @@
 - title @program.title
 
--content_for :javascript do
-  :javascript
-    key.setScope('theater');
+.page-header
+  %h1
+    = @program.title
+    %small
+      %a(href='#{download_program_path(@program)}' data-no-turbolink)
+        %i.icon-download
 
-%h1= @program.title
-
-#category-container
-  -@program.category.each do |category|
-    %ul
-      %li= category['large']['ja_JP']
-      %li.descendant-category= category['middle']['ja_JP']
-
-.container-fluid#container
+.container-fluid
   .row-fluid
-    .span3#info-bar
-      =link_to 'ダウンロード', download_program_path(@program), :'data-no-turbolink' => true
-      %tl#program-detail
-        %dt 放映日時
-        %dd= @program.started_at.to_formatted_s(:long)
-        %dt 時間
-        %dd= @program.duration_s
-        %dt 詳細
-        %dd= @program.detail
-        -@program.extdetail.each do |detail|
-          %dt= detail['item_description']
-          %dd= detail['item']
-        %dt スクリーンショット
-        %dd
-          %img#screenshot
-
-    .span9#movie-container
+    .span9
       %video#video(controls)
         %source{src: @program.movie_uri}
       #rate-controller
@@ -38,4 +17,51 @@
         %span#rate-indicator
           x1.0
 
-      %canvas#canvas
+    .span3
+      %ul.nav.nav-tabs
+        %li.active
+          %a(href='#details' data-toggle='tab') Details
+        %li
+          %a(href='#related' data-toggle='tab') Related
+
+      .tab-content
+        #details.tab-pane.in.fade.active
+          .row-fluid
+            %ul.thumbnails
+              %li.span12
+                .thumbnail
+                  %img#screenshot
+                  %canvas#canvas
+
+          %table.table.table-striped
+            %tbody
+              %tr
+                %td
+                  %i.icon-calendar
+                %td= l @program.started_at, format: :short
+              %tr
+                %td
+                  %i.icon-time
+                %td= @program.duration_s
+              %tr
+                %td 詳細
+                %td= @program.detail
+              - @program.extdetail.each do |detail|
+                %tr
+                  %td= detail['item_description']
+                  %td= detail['item']
+
+        #related.tab-pane.fade
+          %ol
+            - @related.each do |related|
+              %li= link_to related.title, related
+
+- content_for :javascript do
+  :javascript
+    key.setScope('theater');
+
+    var screenshot = new Screenshot('video', 'canvas', 'screenshot', 0.5);
+
+    key('s', 'theater', function() {
+      screenshot.take();
+    });

@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.0.rc1'
+gem 'rails'
 
 # Use mysql as the database for Active Record
 gem 'mysql2'
@@ -47,6 +47,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'pry-remote'
   gem 'pry-nav'
+  gem 'thin'
 end
 
 group :production do
