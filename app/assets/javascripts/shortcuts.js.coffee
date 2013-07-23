@@ -55,7 +55,7 @@ key 'shift+/', ->
 
 # shortcuts for programs list
 key '/', ->
-  $('#search').focus()
+  $('#program_filter_keyword').focus()
   false
 
 $(document).keyup (event) ->

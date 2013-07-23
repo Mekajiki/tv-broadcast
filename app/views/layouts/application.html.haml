@@ -20,8 +20,8 @@
               %ul.nav
                 %li= link_to 'Programs', programs_path
 
-            %form.navbar-search(action="#{programs_path}" method='get')
-              %input#search.search-query(type='text' placeholder='Search' name='keyword')
+            = form_for @program_filter, url: programs_path, html: {method: :get, class: 'navbar-search'} do |f|
+              = f.text_field :keyword, { class: 'search-query', placeholder: 'Search'}
             .pull-right
               %ul.nav
                 %li
