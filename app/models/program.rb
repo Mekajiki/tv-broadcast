@@ -11,8 +11,7 @@ class Program < ActiveRecord::Base
 
   paginates_per 20
 
-  validates_presence_of :channel_id, :title, :movie_file_name, :event_id, :started_at, :ended_at, :duration
-
+  validates_presence_of :title, :movie_file_name
   def is_anime?
     category.to_s.index 'アニメ'
   end
