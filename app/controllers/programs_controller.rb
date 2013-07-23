@@ -6,6 +6,10 @@ class ProgramsController < ApplicationController
     @programs = @program_filter.exec.page params[:page]
   end
 
+  def new
+    @program = Program.new
+  end
+
   def show
     @program = Program.find params[:id]
     @related = Program.where('title LIKE ?', "%#{@program.title}%").where('id NOT IN (?)', @program)

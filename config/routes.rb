@@ -8,7 +8,7 @@ TvBroadcast::Application.routes.draw do
 
   resources :users
 
-  resources :programs, :only => [:index, :show] do
+  resources :programs, :only => [:index, :show, :new] do
     member do
       get :download
     end

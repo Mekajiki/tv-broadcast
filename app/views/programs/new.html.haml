@@ -1,0 +1,6 @@
+=form_for @program, multipart: true do |f|
+  %ul
+    %li= f.text_field :title, placeholder: 'タイトル'
+    %li= f.text_area :detail, placeholder: '詳細'
+    %li= f.file_field :movie
+    %li= f.submit
