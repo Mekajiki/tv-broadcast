@@ -43,7 +43,11 @@ begin
   )
 
   program.movie_file_name = md5_str + '.mp4'
+
   raise unless program.save
+
+  preserve_path = "#{Settings.movie.successed_ts_path}/#{program_title}.ts"
+  System.exec "mv #{work_dir}/#{source_file_name} #{preserve_path}"
 rescue Exception => ex
   puts ex.message
   puts ex.backtrace.join("\n")
@@ -53,7 +57,5 @@ rescue Exception => ex
   STDERR.puts "save to #{escape_path}"
   System.exec "mv #{work_dir}/#{source_file_name} #{escape_path}"
 ensure
-  preserve_path = "#{Settings.movie.successed_ts_path}/#{program_title}.ts"
-  System.exec "mv #{work_dir}/#{source_file_name} #{preserve_path}"
   System.exec "rm -rf #{work_dir}"
 end
