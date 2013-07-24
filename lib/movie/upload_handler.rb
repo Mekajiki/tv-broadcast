@@ -1,4 +1,4 @@
-#!/usr/bin/env ruby
+require 'open3'
 
 module Movie::UploadHandler
   class << self
