@@ -13,7 +13,12 @@ class ProgramsController < ApplicationController
   def create
     @program = Program.new(program_params)
 
-    @program.movie_file_name = Movie::UploadHandler.save_file(params[:program][:movie])
+    tmp_io = params[:program][:movie]
+    @program.movie_file_name = Movie::UploadHandler.save_file(tmp_io)
+    @program.duration = Movie::UploadHandler.detect_duration(tmp_io.path)
+
+    @program.ended_at = tmp_io.tempfile.ctime
+    @program.started_at = @program.ended_at - @program.duration
 
     if @program.save
       redirect_to root_path
