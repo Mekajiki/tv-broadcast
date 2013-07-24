@@ -21,6 +21,10 @@ class Program < ActiveRecord::Base
     "#{Settings.movie.dir_uri}/#{movie_file_name}"
   end
 
+  def farther_detail
+    extdetail || []
+  end
+
   def duration_s
     minutes = duration / 60
     hour = 0
