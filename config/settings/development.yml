@@ -1,4 +1,4 @@
 movie:
   lock_file_path: '/tmp/encode.dev.lock'
   ffmpeg:
-    option: '-f mp4 -vcodec libx264 -threads 8 -t 1:00'
+    option: '-f mp4 -vcodec libx264 -threads 8 -t 60'
