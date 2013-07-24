@@ -10,6 +10,19 @@ class ProgramsController < ApplicationController
     @program = Program.new
   end
 
+  def create
+    @program = Program.new(program_params)
+
+    @program.movie_file_name = Movie::UploadHandler.save_file(params[:program][:movie])
+
+    if @program.save
+      redirect_to root_path
+    else
+      flash.now[:error] = @program.errors
+      render action: 'new'
+    end
+  end
+
   def show
     @program = Program.find params[:id]
     @related = Program.where('title LIKE ?', "%#{@program.title}%").where('id NOT IN (?)', @program)
@@ -23,5 +36,11 @@ class ProgramsController < ApplicationController
       type: 'video/mp4',
       filename: program.title + ".mp4",
       length: File.size(file_path)
+  end
+
+  private
+
+  def program_params
+    params.require(:program).permit(:title, :detail)
   end
 end
