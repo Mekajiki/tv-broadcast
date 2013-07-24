@@ -46,7 +46,7 @@
               %tr
                 %td 詳細
                 %td= @program.detail
-              - @program.extdetail.each do |detail|
+              - @program.farther_detail.each do |detail|
                 %tr
                   %td= detail['item_description']
                   %td= detail['item']

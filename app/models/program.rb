@@ -11,7 +11,7 @@ class Program < ActiveRecord::Base
 
   paginates_per 20
 
-  validates_presence_of :channel_id, :title, :movie_file_name, :event_id, :started_at, :ended_at, :duration
+  validates_presence_of :title, :movie_file_name, :duration, :started_at, :ended_at
 
   def is_anime?
     category.to_s.index 'アニメ'
@@ -19,6 +19,10 @@ class Program < ActiveRecord::Base
 
   def movie_uri
     "#{Settings.movie.dir_uri}/#{movie_file_name}"
+  end
+
+  def farther_detail
+    extdetail || []
   end
 
   def duration_s
@@ -29,32 +33,5 @@ class Program < ActiveRecord::Base
       hour += 1
     end
     "%d:%02d" % [hour, minutes]
-  end
-
-  class << self
-    def new_from_epg epg
-      channel = Channel.find_or_create_by(id_string: epg['channel'])
-      Program.new({
-        channel: channel,
-        event_id: epg['event_id'],
-        freeCA: epg['freeCA'],
-        audio: epg['audio'],
-        video: epg['video'],
-        attachinfo: epg['attachinfo'],
-        title: epg['title'],
-        detail: epg['detail'],
-        extdetail: epg['extdetail'],
-        started_at: datetime_from_epg_timestamp(epg['start']),
-        ended_at: datetime_from_epg_timestamp(epg['end']),
-        duration: epg['duration'],
-        category: epg['category']
-      })
-    end
-
-    private
-    def datetime_from_epg_timestamp timestamp
-      unix_time = timestamp / 10000
-      Time.at(unix_time).to_datetime
-    end
   end
 end

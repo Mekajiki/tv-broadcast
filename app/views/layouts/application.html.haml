@@ -25,6 +25,8 @@
             .pull-right
               %ul.nav
                 %li
+                  =link_to 'Upload', new_program_path
+                %li
                   - if logged_in?
                     %a(href='#{logout_path}' data-method='delete') Logout
                   - else
