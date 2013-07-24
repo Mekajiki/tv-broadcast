@@ -21,7 +21,7 @@ class ProgramsController < ApplicationController
     @program.started_at = @program.ended_at - @program.duration
 
     if @program.save
-      redirect_to root_path
+      redirect_to @program
     else
       flash.now[:error] = @program.errors
       render action: 'new'
