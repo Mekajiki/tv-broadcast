@@ -30,7 +30,7 @@ begin
   p program_info
   raise unless program_info
 
-  program = Program.new_from_epg(program_info)
+  program = Movie::Encoder.movie_from_epg(program_info)
 
   @ffmpeg_option = '-tune animation' if program.is_anime?
 
