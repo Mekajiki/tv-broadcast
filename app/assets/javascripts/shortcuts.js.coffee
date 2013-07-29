@@ -11,6 +11,15 @@ key 'space', 'theater', ->
     video.pause()
   false
 
+key 'f', 'theater', ->
+  video = document.getElementById('video')
+  if video.requestFullscreen
+    video.requestFullscreen()
+  else if video.mozRequestFullScreen
+    video.mozRequestFullScreen()
+  else if video.webkitRequestFullscreen
+    video.webkitRequestFullscreen()
+
 key '-', 'theater', ->
   slider = $('#rate-controller input')
   slider.val (index, value) ->
