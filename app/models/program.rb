@@ -21,6 +21,10 @@ class Program < ActiveRecord::Base
     "#{Settings.movie.dir_uri}/#{movie_file_name}"
   end
 
+  def movie_absolute_path
+    "#{Settings.movie.storage}/#{movie_file_name}"
+  end
+
   def farther_detail
     extdetail || []
   end
