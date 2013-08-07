@@ -11,11 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130605002458) do
+ActiveRecord::Schema.define(version: 20130807195705) do
 
   create_table "channels", force: true do |t|
     t.string   "id_string"
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "gif_animations", force: true do |t|
+    t.integer  "program_id"
+    t.string   "file_name"
+    t.integer  "start_at"
+    t.integer  "end_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

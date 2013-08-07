@@ -7,6 +7,8 @@ class Program < ActiveRecord::Base
 
   belongs_to :channel
 
+  has_many :gif_animations
+
   default_scope { order('started_at DESC') }
 
   paginates_per 20
