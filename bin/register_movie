@@ -2,6 +2,7 @@
 require 'uri'
 require 'open3'
 require 'nkf'
+require 'fileutils'
 
 include System
 
@@ -16,7 +17,7 @@ source_file_name = md5_str + ".ts"
 work_dir = Settings.movie.workspace + Digest::MD5.hexdigest(File.basename(ARGV[0], '.ts'))
 Dir.mkdir work_dir
 begin
-  System.exec "mv '#{ARGV[0]}' #{work_dir}/#{source_file_name}"
+  FileUtils.mv(ARGV[0], "#{work_dir}/#{source_file_name}")
 
   file_path = NKF.nkf('-m0Z1 -w', ARGV[0]).gsub("\uFF5E", '')
   stdin, stdout, stderr = Open3.popen3 "epgdump json #{work_dir}/#{source_file_name} -"
@@ -47,7 +48,7 @@ begin
   raise unless program.save
 
   preserve_path = "#{Settings.movie.successed_ts_path}/#{program_title}.ts"
-  System.exec "mv #{work_dir}/#{source_file_name} #{preserve_path}"
+  FileUtils.mv("#{work_dir}/#{source_file_name}", preserve_path)
 rescue Exception => ex
   puts ex.message
   puts ex.backtrace.join("\n")
@@ -55,7 +56,7 @@ rescue Exception => ex
   STDERR.puts "registration failed: #{ARGV[0]}"
   escape_path = "#{Settings.movie.failed_ts_path}/#{program_title}.ts"
   STDERR.puts "save to #{escape_path}"
-  System.exec "mv #{work_dir}/#{source_file_name} #{escape_path}"
+  FileUtils.mv("#{work_dir}/#{source_file_name}", escape_path)
 ensure
   System.exec "rm -rf #{work_dir}"
 end
