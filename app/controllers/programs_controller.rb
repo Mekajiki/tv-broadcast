@@ -35,7 +35,7 @@ class ProgramsController < ApplicationController
 
   def download
     program = Program.find params[:id]
-    file_path = Settings.movie.storage + '/' + program.movie_file_name
+    file_path = program.movie_absolute_path
     response.headers['Content-Length'] = File.size(file_path).to_s
     send_file file_path,
       type: 'video/mp4',
