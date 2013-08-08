@@ -12,7 +12,11 @@ TvBroadcast::Application.routes.draw do
     member do
       get :download
     end
+
+    resources :gif_animations, :only => [:create]
   end
+
+  resources :gif_animations, :only => [:show]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
