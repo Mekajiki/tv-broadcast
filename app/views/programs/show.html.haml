@@ -66,3 +66,9 @@
     key('s', 'theater', function() {
       screenshot.take();
     });
+
+    var recorder = new GifRecorder('video', '#{program_gif_animations_path(@program)}')
+
+    key('r', 'theater', function() {
+      recorder.toggleState();
+    });
