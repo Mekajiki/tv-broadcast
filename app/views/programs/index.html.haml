@@ -3,7 +3,9 @@
     - @programs.each do |program|
       %tr
         %td
-          %p.date= "#{l program.started_at, format: :short}(#{program.duration_s})"
+          %p.date
+            %span.channel= program.channel_name
+            = "#{l program.started_at, format: :short}(#{program.duration_s})"
           %p
             = link_to program.title, program
             %span.dl-link

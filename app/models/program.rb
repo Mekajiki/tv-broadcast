@@ -34,4 +34,8 @@ class Program < ActiveRecord::Base
     end
     "%d:%02d" % [hour, minutes]
   end
+
+  def channel_name
+    channel ? channel.name : 'Uploaded'
+  end
 end
