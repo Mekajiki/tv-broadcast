@@ -12,6 +12,7 @@ class GifAnimationsController < ApplicationController
           render json: { path: gif_animation_path(gif_animation) },
           status: :created }
       rescue Exception => ex
+        STDERR.puts ex.message
         format.json { render json: ex.message, status: :unprocessable_entity }
       end
     end
