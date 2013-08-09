@@ -7,7 +7,7 @@ module Movie::Gif
 
       Dir.chdir('/tmp')
       System.exec "ffmpeg -ss #{start_at} -i #{source} -r 10 -t #{end_at - start_at} -s #{Settings.gif.resolution} #{prefix}%04d.gif"
-      System.exec "convert -delay 10 -loop 1 #{prefix}*.gif #{out}"
+      System.exec "convert -delay 10 -loop 0 #{prefix}*.gif #{out}"
     end
 
     def convert_program(program, start_at, end_at)
