@@ -3,6 +3,9 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails'
 
+# caching
+gem 'rack-cache'
+
 # Use mysql as the database for Active Record
 gem 'mysql2'
 
