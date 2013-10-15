@@ -18,7 +18,7 @@ module Movie::Gif
 
       create(source, out_path, start_at, end_at)
 
-      return GifAnimation.create(program: program, start_at: start_at.to_i, end_at: end_at.to_i, file_name: file_name)
+      return GifAnimation.create(program: program, start_at: start_at, end_at: end_at, file_name: file_name)
     end
   end
 end
