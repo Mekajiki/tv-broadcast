@@ -48,6 +48,8 @@ group :development, :test do
   gem 'pry-remote'
   gem 'pry-nav'
   gem 'thin'
+  gem 'spring'
+  gem 'quiet_assets'
 end
 
 group :production do
