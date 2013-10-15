@@ -6,8 +6,8 @@ class GifAnimationsController < ApplicationController
       begin
         gif_animation =
           Movie::Gif.convert_program(program,
-                                     params[:start_at].to_i,
-                                     params[:end_at].to_i)
+                                     params[:start_at].to_f,
+                                     params[:end_at].to_f)
         format.json {
           render json: { path: gif_animation_path(gif_animation) },
           status: :created }
