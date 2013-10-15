@@ -2,6 +2,8 @@ module Movie::Gif
   class << self
     def create(source, out, start_at, end_at)
       raise if start_at >= end_at
+      start_at -= Settings.gif.human_reaction_time
+      end_at -= Settings.gif.human_reaction_time
 
       prefix = SecureRandom.hex
 

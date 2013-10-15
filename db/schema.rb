@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130807195705) do
+ActiveRecord::Schema.define(version: 20131015231058) do
 
   create_table "channels", force: true do |t|
     t.string   "id_string"
@@ -23,8 +23,8 @@ ActiveRecord::Schema.define(version: 20130807195705) do
   create_table "gif_animations", force: true do |t|
     t.integer  "program_id"
     t.string   "file_name"
-    t.integer  "start_at"
-    t.integer  "end_at"
+    t.float    "start_at"
+    t.float    "end_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
