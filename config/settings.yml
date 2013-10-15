@@ -3,3 +3,5 @@ movie:
     option: '-SD -1SEG'
   ffmpeg:
     option: '-f mp4 -vcodec libx264 -threads 8'
+gif:
+  human_reaction_time: 0.2
