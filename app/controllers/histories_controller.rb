@@ -1,4 +1,5 @@
 class HistoriesController < ApplicationController
+  skip_before_filter :verify_authenticity_token  
   def create
     program = Program.find params[:program_id]
     user = User.find params[:user_id]

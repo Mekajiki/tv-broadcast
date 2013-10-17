@@ -72,3 +72,5 @@
     key('r', 'theater', function() {
       recorder.toggleState();
     });
+
+    var timeRecorder = new TimeRecorder('video', '#{histories_path}', #{@current_user.id}, #{@program.id});
