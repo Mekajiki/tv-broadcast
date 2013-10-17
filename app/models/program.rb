@@ -7,6 +7,7 @@ class Program < ActiveRecord::Base
 
   belongs_to :channel
 
+  has_many :histories
   has_many :gif_animations
 
   default_scope { order('started_at DESC') }

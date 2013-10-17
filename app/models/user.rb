@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  has_many :histries
+
   validates :uid, presence: true, uniqueness: true
 
   scope :pending, -> { where(status: :pending) }

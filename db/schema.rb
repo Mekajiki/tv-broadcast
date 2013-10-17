@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131015231058) do
+ActiveRecord::Schema.define(version: 20131017160738) do
 
   create_table "channels", force: true do |t|
     t.string   "id_string"
@@ -25,6 +25,16 @@ ActiveRecord::Schema.define(version: 20131015231058) do
     t.string   "file_name"
     t.float    "start_at"
     t.float    "end_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "histories", force: true do |t|
+    t.integer  "program_id"
+    t.integer  "user_id"
+    t.integer  "time"
+    t.boolean  "began"
+    t.boolean  "completed"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
