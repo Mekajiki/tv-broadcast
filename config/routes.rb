@@ -17,6 +17,8 @@ TvBroadcast::Application.routes.draw do
   end
 
   resources :gif_animations, :only => [:show]
+
+  resources :histories, :only => [:create]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
