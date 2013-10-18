@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_many :histries
+  has_many :histories
 
   validates :uid, presence: true, uniqueness: true
 
