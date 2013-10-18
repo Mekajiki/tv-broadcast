@@ -4,7 +4,7 @@ class window.TimeRecorder
     @url = url
     @programId = programId
 
-    setInterval @post, 500
+    setInterval @post, 5000
 
   post: =>
     $.ajax
