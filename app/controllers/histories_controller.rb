@@ -1,20 +1,10 @@
 class HistoriesController < ApplicationController
-  skip_before_filter :verify_authenticity_token  
+  respond_to :json
+
   def create
-    program = Program.find params[:program_id]
-    user = User.find params[:user_id]
-    time = params[:time]
-
-    history = History.where("program_id = ? AND user_id = ?",
-                            program.id,
-                            user.id).first
-    history ||= History.create(program: program, user: user)
-
-    history.time = time.to_i
+    history = current_user.histories.find_or_initialize_by(program_id: params.require(:program_id))
+    history.time = params.require(:time)
     history.save
-
-    respond_to do |format|
-      format.json { render json:'', status: :created }
-    end
+    respond_with history
   end
 end
