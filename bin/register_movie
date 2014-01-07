@@ -36,6 +36,18 @@ begin
   @ffmpeg_option = '-tune animation' if program.is_anime?
 
   target_ts_path = "#{work_dir}/#{source_file_name}"
+
+  if program.title.index('【字】')
+    Movie::Encoder.extract_caption target_ts_path
+    ass_tmp_path = "#{work_dir}/#{source_file_name.split('.')[0]}" + '.ass'
+    ass_dist_path = "#{Settings.movie.storage}/#{md5_str}.ass"
+    FileUtils.mv(ass_tmp_path, ass_dist_path)
+    program.has_caption = true
+
+    @ffmpeg_option ||= ''
+    @ffmpeg_option += " -vf 'ass=#{ass_dist_path}' "
+  end
+
   dist_path = "#{Settings.movie.storage}/#{md5_str}.mp4"
   Movie::Encoder.encode(
     target_ts_path,
@@ -45,14 +57,6 @@ begin
   )
 
   program.movie_file_name = md5_str + '.mp4'
-
-  if program.title.index('【字】')
-    Movie::Encoder.extract_caption target_ts_path
-    srt_tmp_path = "#{work_dir}/#{source_file_name.split('.')[0]}" + '.srt'
-    srt_dist_path = "#{Settings.movie.storage}/#{md5_str}.srt"
-    FileUtils.mv(srt_tmp_path, srt_dist_path)
-    program.has_caption = true
-  end
 
   raise unless program.save
 

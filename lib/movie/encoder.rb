@@ -36,7 +36,7 @@ module Movie::Encoder
     end
 
     def extract_caption(source)
-      System.exec "echo '' | wine #{CAPTION_2_ASS_PATH} -format srt #{source}"
+      System.exec "echo '' | wine #{CAPTION_2_ASS_PATH} -format ass #{source}"
     end
 
     def encode(source, out, program_id, other_options = '')
