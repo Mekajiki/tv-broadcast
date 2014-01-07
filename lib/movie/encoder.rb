@@ -4,6 +4,8 @@ require 'lockfile'
 TSSPLITTER_PATH = Settings.movie.tssplitter.path
 TSSPLITTER_OPTION = Settings.movie.tssplitter.option
 
+CAPTION_2_ASS_PATH = Settings.movie.caption2ass.path
+
 FFMPEG_OPTION = Settings.movie.ffmpeg.option
 FFMPEG_PRESET_PATH = Settings.movie.ffmpeg.preset_path
 
@@ -31,6 +33,10 @@ module Movie::Encoder
     def datetime_from_epg_timestamp timestamp
       unix_time = timestamp / 10000
       Time.at(unix_time).to_datetime
+    end
+
+    def extract_caption(source)
+      System.exec "echo '' | wine #{CAPTION_2_ASS_PATH} -format srt #{source}"
     end
 
     def encode(source, out, program_id, other_options = '')
