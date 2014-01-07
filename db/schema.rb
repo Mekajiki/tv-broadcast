@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131015231058) do
+ActiveRecord::Schema.define(version: 20140107073826) do
 
   create_table "channels", force: true do |t|
     t.string   "id_string"
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 20131015231058) do
     t.text     "category"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "has_caption"
   end
 
   add_index "programs", ["started_at"], name: "index_programs_on_started_at", using: :btree
