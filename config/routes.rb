@@ -11,6 +11,7 @@ TvBroadcast::Application.routes.draw do
   resources :programs, :only => [:index, :show, :new, :create] do
     member do
       get :download
+      get :download_caption
     end
 
     resources :gif_animations, :only => [:create]

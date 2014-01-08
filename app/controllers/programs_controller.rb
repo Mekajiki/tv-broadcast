@@ -43,6 +43,22 @@ class ProgramsController < ApplicationController
       length: File.size(file_path)
   end
 
+  def download_caption
+    program = Program.find params[:id]
+
+    if program.has_caption?
+      file_path = program.caption_absolute_path
+
+      response.headers['Content-Length'] = File.size(file_path).to_s
+      send_file file_path,
+        type: 'text/plain',
+        filename: program.title + ".ass",
+        length: File.size(file_path)
+    else
+      render status: 404
+    end
+  end
+
   private
 
   def program_params

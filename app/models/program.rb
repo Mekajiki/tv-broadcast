@@ -27,6 +27,11 @@ class Program < ActiveRecord::Base
     "#{Settings.movie.storage}/#{movie_file_name}"
   end
 
+  def caption_absolute_path
+    caption_file_name = movie_file_name.split('.')[0] + '.ass'
+    "#{Settings.movie.storage}/#{caption_file_name}"
+  end
+
   def farther_detail
     extdetail || []
   end
