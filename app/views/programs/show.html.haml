@@ -44,10 +44,11 @@
                 %td
                   %i.icon-time
                 %td= @program.duration_s
-              %tr
-                %td 字幕DL
-                %td
-                  %a(href='#{download_caption_program_path(@program)}' data-no-turbolink) 字幕ASS
+              -if @program.has_caption?
+                %tr
+                  %td 字幕DL
+                  %td
+                    %a(href='#{download_caption_program_path(@program)}' data-no-turbolink) 字幕ASS
               %tr
                 %td 詳細
                 %td= @program.detail
